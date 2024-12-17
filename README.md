@@ -1,1 +1,0 @@
-# ALPRO-Kelompok2-2024
