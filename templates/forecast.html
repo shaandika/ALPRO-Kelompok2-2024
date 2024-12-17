@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forecast Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('{{ url_for("static", filename="background3.png") }}') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .plot-container {
+            margin-top: 30px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Forecast Options</h1>
+        <div class="form-group">
+            <label for="horizon">Forecast Horizon:</label>
+            <select name="horizon" id="horizon">
+                <option value="6_months">6 Months</option>
+                <option value="1_year">1 Year</option>
+                <option value="5_years">5 Years</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="variable">Select Variable:</label>
+            <select name="variable" id="variable">
+                <option value="total load actual">Total Load Actual (Overall)</option>
+                {% for column in columns %}
+                    <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <input type="hidden" id="file" value="{{ file }}">
+        <div class="plot-container" id="plot-container">
+            <!-- Plot akan dimuat di sini -->
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            function updatePlot() {
+                const file = $("#file").val();
+                const horizon = $("#horizon").val();
+                const variable = $("#variable").val();
+
+                $.post("/get_plot", { file, horizon, variable }, function(response) {
+                    if (response.success) {
+                        $("#plot-container").html(response.plot_html);
+                    } else {
+                        $("#plot-container").html("<p style='color: red;'>Error: " + response.error + "</p>");
+                    }
+                });
+            }
+
+            $("#horizon, #variable").on("change", function() {
+                updatePlot();
+            });
+
+            updatePlot();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forecasting Energy Consumption</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='Energise-logo2.png') }}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f4f8;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 125px;
+            height: auto; 
+        }
+        
+        .logo {
+            display: flex;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            height: 100vh;
+            background: url('{{ url_for('static', filename='Background1.png') }}') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 5% ;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            max-width: 600px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(90deg, #ffdd00, #ffa500);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 165, 0, 0.3);
+          }
+
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .about-class {
+            height: 100vh;
+            background: url('{{ url_for('static', filename='Background2.png') }}') no-repeat center center/cover;
+
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin-left: 60%;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .about-fil {
+            align-items: center;
+            gap: 3rem;
+        }
+
+        
+        .about-text {
+            flex: 1;
+            text-align: justify;
+        }
+
+        .about-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-class {
+            height: 100vh;
+            background: url('{{ url_for('static', filename='Background3.png') }}') no-repeat center center/cover;
+
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin-left: 10%;
+        }
+
+        .contact-info {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item img {
+            width: 24px;
+            height: 24px;
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="logo"><img src="{{ url_for('static', filename='Energise-logo.png') }}" alt="Energise Logo"></a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Forecasting Energy Consumption</h1>
+            <p class="subtitle">Predicting Energy Consumption for Electrical Industrial</p>
+            <a href="/submission" class="cta-button" target="_blank">Try Our Product For Free</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-class">
+        <div class="about-content">
+            <h2 style="margin-left: 35%;">About Us</h2>
+            <div class="about-fill">
+                <div class="about-text">
+                    <p>At Energise, we leverage advanced data analytics to predict energy consumption for the electrical industrial sector, helping businesses optimize energy usage, reduce costs, and promote sustainability with our cutting-edge forecasting models and industry expertise. we combine cutting-edge technology with deep industry expertise to deliver innovative solutions tailored to the unique needs of our clients. Our advanced forecasting models analyze vast amounts of data to predict energy consumption patterns, enabling businesses to make informed decisions and stay ahead of the curve.</p>
+                </div>
+                <div class="about-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-class">
+        <div class="contact-content">
+            <h2 style="margin-left: 25%;">Contact</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <img src="{{ url_for('static', filename='phone-icon.png') }}" alt="Phone">
+                    <p>+62123456789</p>
+                </div>
+                <div class="contact-item">
+                    <img src="{{ url_for('static', filename='email-icon.png') }}" alt="Email">
+                    <p>Johndoe@example.com</p>
+                </div>
+                <div class="contact-item">
+                    <img src="{{ url_for('static', filename='location-icon.png') }}" alt="Location">
+                    <p>Harvard Street 47</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
